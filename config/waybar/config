@@ -1,0 +1,111 @@
+{
+  "layer": "top",
+  "position": "top", 
+  "height": 32,
+  
+  "modules-left":   ["wlr/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right":  ["tray", "custom/updates", "temperature", "cpu", "memory", "network", "backlight", "pulseaudio","battery"],
+
+  "wlr/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "on-click": "activate",
+    //"format": "{icon}",
+    "persistent_workspaces": {
+      "1": [],
+    },
+    /*"format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": "",
+      "10": "",
+      "default": "",
+      "active": ""
+    }*/
+  },
+
+  "cpu": {
+   "interval": 10, 
+   "format": "{}% ",
+   "max-length": 10 
+  },
+
+  "memory": { 
+   "interval": 30,
+   "format": "{}% ",
+   "max-length": 10 
+  },
+
+  "temperature": { 
+   "thermal-zone": 1, 
+   "hwmon-path": 
+"/sys/class/hwmon/hwmon1/temp1_input", 
+   "critical-threshold": 80, 
+   "format-critical": "{temperatureC}°C ", 
+   "format": "{temperatureC}°C " 
+  },
+  
+  "custom/updates": {
+    "exec": "(checkupdates ; apt list --installed) | wc -l",
+    "interval": 18000,
+    "format": " {}"
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10
+  },
+  "backlight":{
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃝","󰃟","󰃞"],
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "min-length": 6 
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", "", "", ""]
+  },
+  "clock": {
+   "format": "{: %R   %d/%m}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "network": {
+    "format-wifi": " {essid}",
+    "format-ethernet": " {ipaddr}",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "睊 Disconnected",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+    "tooltip-format-ethernet": "{ifname} "
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 Muted",
+    "on-click": "pavucontrol",
+    "scroll-step": 1,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", "", ""]
+    }
+  }
+}

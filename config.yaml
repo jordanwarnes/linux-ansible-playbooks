@@ -1,0 +1,12 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Symlink .config folder
+      synchronize:
+        src: '{{ playbook_dir }}/config/'
+        dest: "/home/{{ lookup('env', 'USER') }}/.config/"
+
+    - name: Symlink .zshrc
+      synchronize:
+        src: '{{ playbook_dir }}/home/.zshrc'
+        dest: "/home/{{ lookup('env', 'USER') }}/.zshrc"

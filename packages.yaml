@@ -1,0 +1,48 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Install all of my packages through pacman
+      community.general.pacman:
+        name:
+          - vim
+          - curl
+          - wget
+          - firefox
+          - feh
+          - rsync
+          - git
+          - keepassxc
+          - qt5ct
+          - dunst
+          - cmus
+          - ranger
+          - unzip
+          - syncthing
+          - network-manager-applet
+          - sddm
+          - gnome-keyring
+          - papirus-icon-theme
+          - nautilus
+          - foot
+          - rofi
+          - breeze
+          - swaybg
+          - swayidle
+          - swaylock
+          - noto-fonts-emoji
+          - ttf-font-awesome
+          - zsh
+          - pavucontrol
+          - apparmor
+          - firejail
+        state: present
+
+    - name: Enable syncthing on boot
+      ansible.builtin.command: systemctl enable syncthing@{{ lookup('env', 'USER') }}
+
+    - name: Enable sddm on boot
+      ansible.builtin.command: systemctl enable sddm
+
+    - name: Enable apparmor on boot
+      ansible.builtin.command: systemctl enable apparmor
+

@@ -1,0 +1,5 @@
+noblacklist ${RUNUSER}/app
+mkdir ${RUNUSER}/app/org.keepassxc.KeePassXC
+whitelist ${RUNUSER}/app/org.keepassxc.KeePassXC
+
+dbus-user.talk org.freedesktop.ScreenSaver
