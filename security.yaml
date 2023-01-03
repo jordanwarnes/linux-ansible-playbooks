@@ -50,27 +50,6 @@
       ansible.builtin.command: grub-mkconfig -o /boot/grub/grub.cfg
       when: grub_cmdline_check.found == 0
 
-    - name: Create secure boot keys
-      ansible-builtin.command: sbctl create-keys
-    
-    - name: Enroll newly created keys
-      ansible-builtin.command: sbctl enroll-keys
-
-    - name: Sign BOOTX64.efi
-      ansible-builtin.command: sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
-
-    - name: Sign core.efi
-      ansible-builtin.command: sbctl sign -s /boot/grub/x86_64-efi/core.efi
-
-    - name: Sign grub.efi
-      ansible-builtin.command: sbctl sign -s /boot/grub/x86_64-efi/grub.efi
-
-    - name: Sign vmlinuz-linux-hardened
-      ansible-builtin.command: sbctl sign -s /boot/vmlinuz-linux-hardened
-    
-    - name: Verify keys
-      ansible-builtin.command: sbctl verify
-
     - name: Enable newer AMDGPU for Southern Islands gpu
       ansible.builtin.lineinfile:
         path: /etc/modprobe.d/amdgpu.conf
