@@ -49,7 +49,7 @@
     
     - name: Download catppuccin mocha theme and unzip
       ansible.builtin.unarchive:
-        src: https://github.com/catppuccin/gtk/blob/main/Releases/Catppuccin-Mocha-Lavender.zip?raw=true
+        src: https://github.com/catppuccin/gtk/releases/download/v0.4.0/Catppuccin-Mocha-Standard-Lavender-Dark.zip
         dest: /home/{{ lookup('env', 'SUDO_USER') }}/.local/share/themes
         remote_src: yes
 
