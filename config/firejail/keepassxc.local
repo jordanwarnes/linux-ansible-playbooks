@@ -1,1 +1,4 @@
 noblacklist ${RUNUSER}/app
+dbus-user.talk org.freedesktop.StatusNotifierItem
+dbus-user.talk foo.bar
+dbus-user.talk org.kde.StatusNotifierWatcher
