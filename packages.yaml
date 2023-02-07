@@ -34,11 +34,11 @@
           - zsh
           - pavucontrol
           - apparmor
-          - firejail
+          - cifs-utils
         state: present
 
     - name: Enable syncthing on boot
-      ansible.builtin.command: systemctl enable syncthing@{{ lookup('env', 'USER') }}
+      ansible.builtin.command: systemctl enable syncthing@{{ lookup('env', 'SUDO_USER') }}
 
     - name: Enable sddm on boot
       ansible.builtin.command: systemctl enable sddm
