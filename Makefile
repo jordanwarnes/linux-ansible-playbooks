@@ -17,10 +17,6 @@ config:
 	@echo "Run config playbook?"
 	@ansible-playbook config.yaml
 
-security:
-	@echo "Run security patches playbook"
-	@ansible-playbook security.yaml
-
 privileged:
 	@echo "Run all playbooks? (packages, local, and config)"
-	@sudo ansible-playbook packages.yaml local.yaml security.yaml
+	@sudo ansible-playbook packages.yaml local.yaml
