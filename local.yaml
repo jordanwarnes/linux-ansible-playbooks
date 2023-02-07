@@ -74,6 +74,22 @@
     - name: Modify papirus-dark to catppuccin colour scheme
       ansible.builtin.command: /tmp/papirus-folders/papirus-folders -C cat-mocha-lavender --theme Papirus-Dark
 
+    - name: Create gtk-4.0 folder
+      ansible.builtin.file:
+        path: /home/{{ lookup('env', 'SUDO_USER') }}/.config/gtk-4.0
+        state: directory
+        owner: "{{ lookup('env', 'SUDO_USER') }}"
+        group: "{{ lookup('env', 'SUDO_USER') }}"
+
+    - name: Symlink catppuccin theme assets to gtk4 folder
+      ansible.builtin.command: ln -sf "~/.local/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
+
+    - name: Symlink catppuccin theme gtk.css to gtk4 folder
+      ansible.builtin.command: ln -sf "~/.local/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
+      
+    - name: Symlink catppuccin theme gtk-dark.css to gtk4 folder
+      ansible.builtin.command: ln -sf "~/.local/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
+
     - name: Copy .local configs to my home directory
       synchronize:
         src: '{{ playbook_dir }}/local/'
