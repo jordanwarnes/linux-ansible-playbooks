@@ -69,8 +69,7 @@ Run the following commands to install the certain parts of the configuration:
 - zsh
 - pavucontrol
 - apparmor
-- firejail
-
+- cifs-utils
 
 #### Install my .config configuration files
 
