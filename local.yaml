@@ -82,13 +82,13 @@
         group: "{{ lookup('env', 'SUDO_USER') }}"
 
     - name: Symlink catppuccin theme assets to gtk4 folder
-      ansible.builtin.command: ln -sf "~/.local/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
+      ansible.builtin.command: ln -sf "/home/{{ lookup('env', 'SUDO_USER') }}/.local/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/assets" "/home/{{ lookup('env', 'SUDO_USER') }}/.config/gtk-4.0/assets"
 
     - name: Symlink catppuccin theme gtk.css to gtk4 folder
-      ansible.builtin.command: ln -sf "~/.local/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
+      ansible.builtin.command: ln -sf "/home/{{ lookup('env', 'SUDO_USER') }}/.local/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk.css" "/home/{{ lookup('env', 'SUDO_USER') }}/.config/gtk-4.0/gtk.css"
       
     - name: Symlink catppuccin theme gtk-dark.css to gtk4 folder
-      ansible.builtin.command: ln -sf "~/.local/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
+      ansible.builtin.command: ln -sf "/home/{{ lookup('env', 'SUDO_USER') }}/.local/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk-dark.css" "/home/{{ lookup('env', 'SUDO_USER') }}/.config/gtk-4.0/gtk-dark.css"
 
     - name: Copy .local configs to my home directory
       synchronize:
