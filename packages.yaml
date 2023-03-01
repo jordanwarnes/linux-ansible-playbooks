@@ -2,7 +2,7 @@
   gather_facts: false
   tasks:
     - name: Install all of my packages through pacman
-      community.general.pacman:
+      ansible.builtin.apt:
         name:
           - vim
           - curl
@@ -30,11 +30,13 @@
           - swayidle
           - swaylock
           - noto-fonts-emoji
-          - ttf-font-awesome
+          - fonts-font-awesome
           - zsh
           - pavucontrol
           - apparmor
           - cifs-utils
+          - sway
+          - waybar
         state: present
 
     - name: Enable syncthing on boot
