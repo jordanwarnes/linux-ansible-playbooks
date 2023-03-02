@@ -5,7 +5,7 @@ Setups up my linux system with all of my configurations.
 ##### My setup:
 
 Window manager:
-- [Hyprland](https://hyprland.org/)
+- [Sway](https://swaywm.org/)
 
 Terminal:
 - [Foot](https://codeberg.org/dnkl/foot)
@@ -25,7 +25,7 @@ GTK theme:
 
 **Operating system:**
 
-- `arch linux`
+- `debian 11 bullseye`
 
 **Packages:**
 
@@ -78,14 +78,6 @@ Run the following commands to install the certain parts of the configuration:
 #### Install my .local configuration files
 
 - `make local`
-
-#### Install my AUR packages
-
-- `make aur`
-
-#### Install security patches
-
-- `make security`
 
 #### Or to install everything simply run:
 
