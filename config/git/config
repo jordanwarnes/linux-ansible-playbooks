@@ -1,7 +1,3 @@
 [user]
-	name = jordanwarne
+	name = jordanwarnes
 	email = jw@omg.lol
-	signingkey = 60F4D50AA13E28A2
-
-[commit]
-        gpgsign = true

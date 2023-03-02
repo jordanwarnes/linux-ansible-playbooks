@@ -121,5 +121,20 @@
         url: https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf
         dest: "/home/{{ lookup('env', 'SUDO_USER') }}/.local/share/fonts/"
 
+    - name: Download font awesome regular fonts
+      ansible.builtin.get_url:
+        url: https://github.com/FortAwesome/Font-Awesome/raw/6.x/otfs/Font%20Awesome%206%20Free-Regular-400.otf
+        dest: "/home/{{ lookup('env', 'SUDO_USER') }}/.local/share/fonts/"
+
+    - name: Download font awesome brand fonts
+      ansible.builtin.get_url:
+        url: https://github.com/FortAwesome/Font-Awesome/raw/6.x/otfs/Font%20Awesome%206%20Brands-Regular-400.otf
+        dest: "/home/{{ lookup('env', 'SUDO_USER') }}/.local/share/fonts/"
+    
+    - name: Download font awesome solid fonts
+      ansible.builtin.get_url:
+        url: https://github.com/FortAwesome/Font-Awesome/raw/6.x/otfs/Font%20Awesome%206%20Free-Solid-900.otf
+        dest: "/home/{{ lookup('env', 'SUDO_USER') }}/.local/share/fonts/"
+
 
 

@@ -7,7 +7,6 @@
           - vim
           - curl
           - wget
-          - firefox
           - feh
           - rsync
           - git
@@ -18,7 +17,7 @@
           - ranger
           - unzip
           - syncthing
-          - network-manager-applet
+          - network-manager-gnome
           - sddm
           - gnome-keyring
           - papirus-icon-theme
@@ -28,9 +27,6 @@
           - breeze
           - swaybg
           - swayidle
-          - swaylock
-          - noto-fonts-emoji
-          - fonts-font-awesome
           - zsh
           - pavucontrol
           - apparmor
