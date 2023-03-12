@@ -1,8 +1,8 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    - name: Install all of my packages through pacman
-      ansible.builtin.apt:
+    - name: Install all of my packages through dnf
+      ansible.builtin.dnf:
         name:
           - vim
           - curl
