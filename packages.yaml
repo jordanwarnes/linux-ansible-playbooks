@@ -1,23 +1,22 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    - name: Install all of my packages through dnf
-      ansible.builtin.dnf:
+    - name: Install all of my packages through pacman
+      ansible.builtin.pacman:
         name:
           - vim
           - curl
           - wget
           - feh
+          - firefox
           - rsync
           - git
-          - keepassxc
           - qt5ct
-          - dunst
+          - mako
           - cmus
           - ranger
           - unzip
-          - syncthing
-          - network-manager-gnome
+          - network-manager-applet
           - sddm
           - gnome-keyring
           - papirus-icon-theme
@@ -27,16 +26,15 @@
           - breeze
           - swaybg
           - swayidle
+          - swaylock
           - zsh
           - pavucontrol
           - apparmor
           - cifs-utils
           - sway
           - waybar
+          - ncspot
         state: present
-
-    - name: Enable syncthing on boot
-      ansible.builtin.command: systemctl enable syncthing@{{ lookup('env', 'SUDO_USER') }}
 
     - name: Enable sddm on boot
       ansible.builtin.command: systemctl enable sddm
