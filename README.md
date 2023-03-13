@@ -5,13 +5,13 @@ Setups up my linux system with all of my configurations.
 ##### My setup:
 
 Window manager:
-- [Sway](https://swaywm.org/)
+- [hyprland](https://github.com/hyprwm/Hyprland)
 
 Terminal:
-- [Foot](https://codeberg.org/dnkl/foot)
+- [foot](https://codeberg.org/dnkl/foot)
 
 Status bar:
-- [Waybar](https://github.com/Alexays/Waybar)
+- [waybar](https://github.com/Alexays/Waybar)
 
 Icon theme (with catppuccin folders patch):
 - [Papirus Icon Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
@@ -25,7 +25,7 @@ GTK theme:
 
 **Operating system:**
 
-- `debian 11 bullseye`
+- `arch linux`
 
 **Packages:**
 
@@ -39,20 +39,18 @@ Run the following commands to install the certain parts of the configuration:
 - `make packages`
 
 **Packages that are installed:**
-
 - vim
 - curl
 - wget
+- feh
 - firefox
 - rsync
 - git
-- keepassxc
 - qt5ct
-- dunst
+- mako
 - cmus
 - ranger
 - unzip
-- syncthing
 - network-manager-applet
 - sddm
 - gnome-keyring
@@ -61,15 +59,15 @@ Run the following commands to install the certain parts of the configuration:
 - foot
 - rofi
 - breeze
-- sway
 - swaybg
-- swaylock
 - swayidle
-- fonts-noto-color-emoji
+- swaylock
 - zsh
 - pavucontrol
 - apparmor
 - cifs-utils
+- waybar
+- ncspot
 
 #### Install my .config configuration files
 
