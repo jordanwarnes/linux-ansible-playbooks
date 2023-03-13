@@ -1,91 +1,111 @@
 {
-  // "layer": "top", // Waybar at top layer
-  // "position": "bottom", // Waybar position (top|bottom|left|right)
-  "height": 20, // Waybar height (to be removed for auto height)
-  // "width": 1280, // Waybar width
-  "spacing": 2, // Gaps between modules (4px)
-  // Choose the order of the modules
-  "modules-left": ["sway/workspaces", "sway/window"],
-  "modules-center": [],
-  "modules-right": ["custom/clock", "tray"],
+    "layer": "top",
+    "position": "top", 
+    "height": 32,
+    
+    "modules-left":   ["wlr/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right":  ["tray", "custom/updates", "temperature", "cpu", "memory", "network", "backlight", "pulseaudio","battery"],
   
-  "tray": {
-      // "icon-size": 21,
+    "wlr/workspaces": {
+      "disable-scroll": true,
+      "all-outputs": true,
+      "on-click": "activate",
+      //"format": "{icon}",
+      "persistent_workspaces": {
+        "1": [],
+      },
+      /*"format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": "",
+        "10": "",
+        "default": "",
+        "active": ""
+      }*/
+    },
+  
+    "cpu": {
+     "interval": 10, 
+     "format": "{}% ",
+     "max-length": 10 
+    },
+  
+    "memory": { 
+     "interval": 30,
+     "format": "{}% ",
+     "max-length": 10 
+    },
+  
+    "temperature": { 
+     "thermal-zone": 1, 
+     "hwmon-path": 
+  "/sys/class/hwmon/hwmon1/temp1_input", 
+     "critical-threshold": 80, 
+     "format-critical": "{temperatureC}°C ", 
+     "format": "{temperatureC}°C " 
+    },
+    
+    "custom/updates": {
+      "exec": "(checkupdates ; apt list --installed) | wc -l",
+      "interval": 18000,
+      "format": " {}"
+    },
+    "tray": {
+      "icon-size": 14,
       "spacing": 10
-  },
-  "custom/clock": {
-        "exec": "echo '  '$(date +'%r')'  '",
-        "interval": 1
-  },
-  "cpu": {
-      "format": "{usage}% ",
-      "tooltip": false
-  },
-  "memory": {
-      "format": "{}% "
-  },
-  "temperature": {
-      // "thermal-zone": 2,
-      // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-      "critical-threshold": 80,
-      // "format-critical": "{temperatureC}°C {icon}",
-      "format": "{temperatureC}°C {icon}",
-      "format-icons": ["", "", ""]
-  },
-  "battery": {
+    },
+    "backlight":{
+      "device": "intel_backlight",
+      "format": "{icon} {percent}%",
+      "format-icons": ["󰃝","󰃟","󰃞"],
+      "on-scroll-up": "brightnessctl set 1%+",
+      "on-scroll-down": "brightnessctl set 1%-",
+      "min-length": 6 
+    },
+    "battery": {
       "states": {
-          // "good": 95,
-          "warning": 30,
-          "critical": 10
+        "good": 95,
+        "warning": 30,
+        "critical": 20
       },
-      "format": "{capacity}% ↓",
-      "format-charging": "{capacity}% ↑",
-      "format-plugged": "{capacity}% ↑",
-      "format-alt": "{time}",
-      // "format-good": "", // An empty format will hide the module
-      // "format-full": "",
-  },
-  "battery#bat2": {
-      "bat": "BAT2"
-  },
-  "network": {
-      // "interface": "wlp2*", // (Optional) To force the use of this interface
-      "format-wifi": "{essid} ({signalStrength}%) ↑",
-      "format-ethernet": "{ipaddr}/{cidr} ↑",
-      "tooltip-format": "{ifname} via {gwaddr} ↑",
-      "format-linked": "{ifname} (No IP) ↑",
-      "format-disconnected": "Disconnected ↓",
-      "format-alt": "{ifname}: {ipaddr}/{cidr}"
-  },
-  "pulseaudio": {
-      // "scroll-step": 1, // %, can be a float
-      "format": "{volume}% {icon} {format_source}",
-      "format-bluetooth": "{volume}% {icon}B {format_source}",
-      "format-bluetooth-muted": "X {icon}B {format_source}",
-      "format-muted": "X {format_source}",
-      "format-source": "{volume}% S",
-      "format-source-muted": "S",
+      "format": "{icon} {capacity}%",
+      "format-charging": " {capacity}%",
+      "format-plugged": " {capacity}%",
+      "format-alt": "{time} {icon}",
+      "format-icons": ["", "", "", "", "", "", "", "", "", "", ""]
+    },
+    "clock": {
+     "format": "{: %R   %d/%m}",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "network": {
+      "format-wifi": " {essid}",
+      "format-ethernet": " {ipaddr}",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": "睊 Disconnected",
+      "tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+      "tooltip-format-ethernet": "{ifname} "
+    },
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "󰝟 Muted",
+      "on-click": "pavucontrol",
+      "scroll-step": 1,
       "format-icons": {
-          "headphone": "HP",
-          "hands-free": "HF",
-          "headset": "HS",
-          "phone": "PH",
-          "portable": "PT",
-          "car": "CR",
-          "default": ["L", "M", "F"]
-      },
-      "on-click": "pavucontrol"
-  },
-  "custom/media": {
-      "format": "{icon} {}",
-      "return-type": "json",
-      "max-length": 40,
-      "format-icons": {
-          "spotify": "",
-          "default": "🎜"
-      },
-      "escape": true,
-      "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-      // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "", "", ""]
+      }
+    }
   }
-}
