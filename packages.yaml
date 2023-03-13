@@ -31,7 +31,6 @@
           - pavucontrol
           - apparmor
           - cifs-utils
-          - sway
           - waybar
           - ncspot
         state: present
